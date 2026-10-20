@@ -327,10 +327,17 @@ footer{margin-top:48px;border-top:1px solid var(--rule);padding-top:18px}
 <h3>Цена в объявлении — ещё не цена жизни</h3>
 <p>Аренда квартир в Буэнос-Айресе устроена так: в заголовке стоит красивая цифра, а мелким шрифтом — «+ expensas». Потом добавляются свет, газ, интернет, иногда ABL. В конце первого месяца жилец складывает счета и понимает, что «дешёвая» квартира была дешёвой только в объявлении. <span class="aside">(Как авиабилет за доллар, к которому потом продают кресло.)</span></p>
 <div class="surprise">
-  <div class="bad"><p class="lbl">Похожая двушка в объявлении «USD 1 450»</p><span class="big" id="sp-total">≈ USD 1 841</span><ul><li>аренда USD 1 450</li><li>+ expensas ARS 450 000 <span id="sp-exp">(≈ USD 294)</span></li><li>+ свет, газ, интернет ARS 150 000 <span id="sp-util">(≈ USD 98)</span></li></ul></div>
-  <div class="ok"><p class="lbl">Córdoba 4340, всё включено</p><span class="big">USD 1 800</span><ul><li>аренда, expensas и свет в одной цифре</li><li>свет в пределах лимита</li><li>сколько платите — известно заранее</li></ul></div>
+  <div class="bad"><p class="lbl">Похожая двушка в объявлении «USD 1 450»</p><span class="big" id="sp-total">≈ USD 1 841</span><ul><li>аренда USD 1 450</li><li>+ expensas ARS 450 000 <span id="sp-exp">(≈ USD 294)</span></li><li>+ свет, газ, интернет ARS 150 000 <span id="sp-util">(≈ USD 98)</span></li><li>+ комиссия агентства 20% от контракта (≈ USD 290 в пересчёте на месяц)</li></ul></div>
+  <div class="ok"><p class="lbl">Córdoba 4340, всё включено</p><span class="big">USD 1 800</span><ul><li>аренда, expensas и свет в одной цифре</li><li>свет в пределах лимита</li><li>сколько платите — известно заранее</li><li>без комиссии агентства</li></ul></div>
 </div>
-<p class="punch" id="sp-diff">В объявлении на USD 350 дешевле. В конце месяца на USD 41 дороже.</p>
+<p class="punch" id="sp-diff">В объявлении на USD 350 дешевле. В итоге на USD 331 в месяц дороже.</p>
+<p>А теперь то же самое на наших квартирах: если бы их сдавало агентство с комиссией 20% от контракта, контракт на 12 месяцев:</p>
+<div class="tbl"><table id="agency-tbl">
+<tr><th>Квартира</th><th>Через агентство, в месяц</th><th>Напрямую, в месяц</th><th>Экономия за 12 месяцев</th></tr>
+<tr><td>Moldes 2546, Бельграно</td><td class="opt" id="ag-m-a">≈ 1 928</td><td class="must" id="ag-m-d">≈ 1 648</td><td class="must">3 360</td></tr>
+<tr><td>Córdoba 4340, Палермо</td><td class="opt">2 160</td><td class="must">1 800</td><td class="must">4 320</td></tr>
+</table></div>
+<p class="fine">Суммы в USD. Moldes: аренда 1 400 + expensas ARS 380 000, свет и интернет оплачиваются отдельно в обоих случаях. Комиссия считается от аренды за весь срок и платится сразу, здесь она разложена по месяцам.</p>
 <p>Иллюзия «найду дешевле» часто обходится дороже самой аренды. Поэтому у нас в каждой карточке сразу стоит итог за месяц. Сравнивайте итоги, а не заголовки.</p>
 <p class="fine">Пример условный, суммы в долларах — по текущему курсу BNA.</p>
 
@@ -471,9 +478,10 @@ document.querySelectorAll(".usd-limit").forEach(s=>s.textContent=round1k(LIMIT/R
 document.getElementById("usd-uif").textContent=round1k(293400000/RATE);
 {const u=n=>Math.round(n/RATE);const e=u(450000),t=u(150000);
 document.getElementById("sp-exp").textContent="(≈ USD "+e+")";document.getElementById("sp-util").textContent="(≈ USD "+t+")";
-const tot=1450+e+t, d=tot-1800;
+const tot=1450+e+t+290, d=tot-1800;
+{const me=u(380000);document.getElementById("ag-m-a").textContent="≈ "+(1400+me+280).toLocaleString("ru-RU");document.getElementById("ag-m-d").textContent="≈ "+(1400+me).toLocaleString("ru-RU");}
 document.getElementById("sp-total").textContent="≈ USD "+tot.toLocaleString("ru-RU");
-document.getElementById("sp-diff").textContent="В объявлении на USD 350 дешевле. В конце месяца "+(d>=0?"на USD "+d+" дороже.":"дешевле всего на USD "+(-d)+".");
+document.getElementById("sp-diff").textContent="В объявлении на USD 350 дешевле. В итоге "+(d>=0?"на USD "+d+" в месяц дороже.":"дешевле всего на USD "+(-d)+".");
 document.getElementById("moldes-total").textContent="Итого ≈ USD "+(1400+u(380000)).toLocaleString("ru-RU")+" в месяц + свет и интернет (expensas ARS 380 000)";}
 {const ars=140000*RATE;document.getElementById("ex-note").textContent="≈ "+Math.round(ars/1e6)+" млн ARS, "+(ars<=LIMIT?"ниже":"выше")+" лимита гербового сбора";}
 /* график */
