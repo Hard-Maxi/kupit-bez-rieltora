@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Купить без риелтора в CABA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,800;1,7..72,400&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Лонгрид одной колонкой: нотариальная бумага + цветные пометки на полях (как в файле правок) */
+:root{
+  --paper:#F2F3EF; --sheet:#FFFFFF; --ink:#1B2328; --muted:#5E6A70; --rule:#D8DCD6;
+  --red:#B8322A; --red-bg:#FBE4E1; --green:#1C7447; --green-bg:#DCF1E4;
+  --amber:#9A6208; --amber-bg:#FBEFD9; --blue:#2F5DA8; --blue-bg:#E2EAF8;
+  --c1:#2F5DA8; --c2:#A8720A; --c3:#00897B; --c4:#B8322A;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#14181A; --sheet:#1C2124; --ink:#E7EBE8; --muted:#9AA5AA; --rule:#2E3539;
+  --red:#FF8175; --red-bg:#3A1F1C; --green:#70D6A0; --green-bg:#16301F;
+  --amber:#F0B04A; --amber-bg:#35290F; --blue:#93B5F3; --blue-bg:#1B2740;
+  --c1:#5B8EE6; --c2:#C4871A; --c3:#14A595; --c4:#E8625A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14181A; --sheet:#1C2124; --ink:#E7EBE8; --muted:#9AA5AA; --rule:#2E3539;
+  --red:#FF8175; --red-bg:#3A1F1C; --green:#70D6A0; --green-bg:#16301F;
+  --amber:#F0B04A; --amber-bg:#35290F; --blue:#93B5F3; --blue-bg:#1B2740;
+  --c1:#5B8EE6; --c2:#C4871A; --c3:#14A595; --c4:#E8625A; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-text-size-adjust:100%}
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding-block:32px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.meta{font-size:13px;color:var(--muted);margin:0 0 18px}
+h1{font:800 clamp(30px,8vw,52px)/1.05 var(--serif);letter-spacing:-.01em;margin:0 0 22px;text-wrap:balance}
+h2{font:800 clamp(23px,5vw,30px)/1.2 var(--serif);margin:56px 0 14px;text-wrap:balance}
+h3{font:700 17px/1.35 var(--sans);margin:0 0 6px}
+p{margin:0 0 14px;max-width:66ch}
+.lead{font:400 19px/1.65 var(--serif)}
+.punch{font:600 19px/1.5 var(--serif);margin:18px 0}
+.aside{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+
+/* герой-цифра */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:end;background:var(--sheet);padding:20px;margin:26px 0;border-left:5px solid var(--green)}
+.hero b{font:800 clamp(40px,11vw,64px)/1 var(--serif);color:var(--green);font-variant-numeric:tabular-nums}
+.hero span{font-size:15px;color:var(--muted);padding-bottom:6px}
+@media (max-width:480px){.hero{grid-template-columns:1fr}.hero span{padding:0}}
+
+/* пометки на полях */
+.note{background:var(--sheet);border-left:5px solid var(--blue);padding:14px 16px;margin:18px 0}
+.note.red{border-left-color:var(--red)} .note.amber{border-left-color:var(--amber)} .note.green{border-left-color:var(--green)}
+.note p:last-child{margin:0}
+.tag{display:inline-block;font:700 12px var(--sans);padding:2px 8px;border-radius:3px;margin-bottom:6px;background:var(--blue-bg);color:var(--blue)}
+.red .tag{background:var(--red-bg);color:var(--red)} .amber .tag{background:var(--amber-bg);color:var(--amber)} .green .tag{background:var(--green-bg);color:var(--green)}
+mark{background:var(--green-bg);color:var(--green);font-weight:700;padding:0 3px}
+mark.r{background:var(--red-bg);color:var(--red)} mark.a{background:var(--amber-bg);color:var(--amber)}
+
+/* главное */
+.key{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.key li{background:var(--sheet);padding:12px 14px 12px 44px;position:relative}
+.key li::before{content:"";position:absolute;left:14px;top:17px;width:16px;height:16px;border-radius:50%;background:var(--green-bg);border:2px solid var(--green)}
+
+/* законы */
+.laws{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:16px 0}
+.law{background:var(--sheet);padding:14px;min-width:0}
+.law code{font:700 13px var(--sans);color:var(--blue)}
+.law p{font-size:15px;margin:6px 0 0}
+
+/* график */
+.chart{background:var(--sheet);padding:18px 16px 14px;margin:18px 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--muted);margin:0 0 14px}
+.sw{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.row{margin:0 0 14px}
+.row-lbl{display:flex;justify-content:space-between;gap:10px;font-size:14px;margin-bottom:5px}
+.row-lbl b{font-variant-numeric:tabular-nums}
+.track{position:relative;height:26px}
+.bar{display:flex;gap:2px;height:100%}
+.seg{height:100%;min-width:2px;cursor:pointer;border:0;padding:0}
+.seg:last-child{border-radius:0 4px 4px 0}
+.axis{position:relative;height:18px;border-top:1px solid var(--rule);margin-top:4px;font-size:12px;color:var(--muted)}
+.axis span{position:absolute;top:2px;transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.axis span:first-child{transform:none}
+.tip{position:fixed;z-index:20;pointer-events:none;background:var(--ink);color:var(--paper);font-size:13px;padding:6px 9px;border-radius:4px;max-width:240px}
+details{margin-top:8px;font-size:14px}
+summary{cursor:pointer;color:var(--blue);font-weight:600}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 8px;border:1px solid var(--rule);vertical-align:top}
+th{font-weight:700;color:var(--muted)}
+td.must{color:var(--green);font-weight:700}
+td.opt{color:var(--red);font-weight:700}
+td.zero{color:var(--muted)}
+.tkey{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;margin:8px 0 0}
+.tkey .g{color:var(--green);font-weight:700} .tkey .r{color:var(--red);font-weight:700}
+
+/* калькулятор */
+.calc{background:var(--sheet);padding:18px 16px;margin:18px 0;display:grid;gap:14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 14px;align-items:start}
+.f{display:grid;grid-template-rows:auto 46px;gap:6px;font-size:14px;font-weight:600;min-width:0}
+.f input[type=number]{height:46px}
+.f .toggle{height:46px;align-items:stretch;flex-wrap:nowrap}
+.f .toggle button{flex:1;padding:0 12px}
+.out div{display:grid;align-content:space-between;gap:4px}
+input[type=number]{font:600 18px var(--sans);padding:9px 11px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink);width:100%}
+.toggle{display:flex;gap:6px;flex-wrap:wrap}
+.toggle button{font:600 14px var(--sans);padding:8px 12px;border-radius:20px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.out{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.out div{background:var(--paper);padding:10px 12px}
+.out small{display:block;font-size:12px;color:var(--muted)}
+.out b{font:800 22px var(--serif);font-variant-numeric:tabular-nums}
+.out .save b{color:var(--green)} .out .waste b{color:var(--red)}
+.fine{font-size:13px;color:var(--muted);margin:0}
+
+/* матрица сбора */
+.matrix{display:grid;grid-template-columns:minmax(104px,.9fr) 1fr 1fr;hyphens:auto;overflow-wrap:anywhere;gap:2px;background:var(--rule);margin:18px 0;font-size:14px}
+.matrix>div{background:var(--sheet);padding:12px 10px;min-width:0}
+.matrix .h{background:var(--paper);font-weight:700;color:var(--muted);font-size:13px}
+.matrix .v{font:800 26px/1.1 var(--serif);display:block;margin-bottom:4px}
+.m0 .v{color:var(--green)} .m1 .v{color:var(--amber)} .m2 .v{color:var(--red)}
+
+/* шаги */
+.steps{list-style:none;margin:18px 0;padding:0;counter-reset:s;display:grid;gap:2px}
+.steps li{counter-increment:s;background:var(--sheet);padding:14px 16px 14px 58px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:13px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);font:800 15px/28px var(--sans);text-align:center}
+.steps p{font-size:15px;margin:4px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font:700 12px var(--sans);padding:2px 8px;border-radius:3px;background:var(--blue-bg);color:var(--blue)}
+.chip.a{background:var(--amber-bg);color:var(--amber)} .chip.g{background:var(--green-bg);color:var(--green)}
+
+/* кто платит */
+.pays{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.pays>div{background:var(--sheet);padding:14px;min-width:0}
+.pays ul{margin:8px 0 0;padding-left:18px;font-size:15px}
+.pays li{margin:4px 0}
+@media (max-width:520px){.pays{grid-template-columns:1fr}}
+
+/* чек-лист */
+.check{background:var(--sheet);padding:8px 16px;margin:18px 0}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rule);cursor:pointer;font-size:15px}
+.check label:last-child{border:0}
+.check input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--green)}
+.check label.on span{color:var(--muted);text-decoration:line-through}
+.prog{font-size:14px;color:var(--muted);margin:6px 0 0}
+
+/* аренда */
+.rent{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin:18px 0}
+.flat{background:var(--sheet);padding:16px;display:grid;gap:8px;align-content:start;border-top:4px solid var(--green)}
+.flat.soon{border-top-color:var(--rule)}
+.flat .price{font:800 22px var(--serif)}
+.flat ul{margin:0;padding-left:18px;font-size:15px}
+.btn{display:inline-block;font:700 15px var(--sans);text-decoration:none;padding:10px 14px;border-radius:4px;background:var(--ink);color:var(--paper);justify-self:start}
+
+/* финал */
+.vote{background:var(--sheet);padding:16px;margin:18px 0;font-size:17px;display:grid;gap:6px}
+.contacts{display:grid;gap:8px;margin:18px 0}
+.contacts div{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;background:var(--sheet);padding:10px 14px}
+.contacts span{font-weight:700;user-select:all}
+.copy{font:600 13px var(--sans);padding:4px 10px;border-radius:14px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);cursor:pointer}
+.small{font-size:13px;color:var(--muted)}
+.small li{margin:4px 0}
+footer{margin-top:48px;border-top:1px solid var(--rule);padding-top:18px}
+</style>
+<meta name="description" content="Как купить квартиру в Буэнос-Айресе без риелтора: законы, расходы, калькулятор, гербовый сбор 2026, шаги сделки и чек-лист.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USD 6 776 за открытую дверь — купить квартиру в Буэнос-Айресе без риелтора">
+<meta property="og:description" content="Законы, расходы с калькулятором, гербовый сбор 2026, 5 шагов сделки и чек-лист до задатка.">
+<meta property="og:image" content="https://hard-maxi.github.io/kupit-bez-rieltora/og.png">
+<meta property="og:url" content="https://hard-maxi.github.io/kupit-bez-rieltora/">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+
+<div class="wrap" lang="ru">
+<p class="meta">Канал t.me/realestateBA · актуально на октябрь 2026 · курс BNA <span id="meta-rate">1 530</span> ARS за доллар</p>
+
+<h1>USD 6 776 ЗА ОТКРЫТУЮ ДВЕРЬ</h1>
+
+<p class="lead">Бельграно, вторник, одиннадцать утра. Риелтор открывает дверь, называет комнату с окном в шахту «luminoso» и уходит через двадцать минут. Через месяц он выставит покупателю 4% + IVA.</p>
+<p class="lead">При цене квартиры USD 140 000 это USD 6 776. Почти пять месяцев аренды хорошей квартиры в том же Бельграно (про неё в конце).</p>
+
+<div class="hero"><b>6 776</b><span>долларов экономит покупатель квартиры за USD 140 000, если идёт напрямую к собственнику. Продавец экономит ещё около USD 5 000.</span></div>
+
+<p>Хорошая новость: в Буэнос-Айресе риелтора можно не звать. Закон не против. Обязателен только нотариус. Ниже — как купить самому и не купить воздух.</p>
+
+<h2>Главное за 30 секунд</h2>
+<ul class="key">
+  <li><b>Покупать «de dueño directo» законно.</b> Ни один закон не обязывает нанимать риелтора.</li>
+  <li><b>Обязателен только нотариус</b> (escribano). Его выбирает и оплачивает покупатель.</li>
+  <li><b>Единственное жильё до 226,1 млн ARS (≈ <span class="usd-limit">USD 148 000</span>) — гербовый сбор 0%.</b></li>
+  <li><b>Продавец-физлицо с 2026 года не платит налог с продажи</b>: ITI отменён, Ganancias тоже.</li>
+  <li><b>Иностранцу хватит паспорта и CDI.</b> Резиденция не нужна.</li>
+</ul>
+
+<h2>Риелтор — это право, а не обязанность</h2>
+<p>Закон регулирует профессию риелтора. Нанимать его он не заставляет. Вот на чём это держится:</p>
+<div class="laws">
+  <div class="law"><code>Ley 2340 CABA, ст. 2</code><p>Риелтор — тот, кто посредничает в <b>чужих</b> сделках регулярно и за деньги. Собственник, который продаёт свою квартиру, под это не подпадает.</p></div>
+  <div class="law"><code>Ley 2340, ст. 15–16</code><p>Без лицензии нельзя работать посредником и требовать комиссию. Про обязанность сторон звать посредника — ни слова.</p></div>
+  <div class="law"><code>CCyC, ст. 1017</code><p>Право собственности переходит только через escritura pública у нотариуса. Это единственная обязательная форма.</p></div>
+  <div class="law"><code>CCyC, ст. 1345–1355</code><p>Договор с посредником отдельный от купли-продажи. Есть он или нет, на действительность сделки не влияет.</p></div>
+</div>
+<div class="note amber"><span class="tag">Внимание</span>
+<p>В 2010 году палата риелторов CUCICBA через Коллегию нотариусов заявила, что в любой сделке «исключительно» должны участвовать её члены. В тексте Ley 2340 такого нет. Суды используют ст. 15–16, только чтобы отказать нелицензированному посреднику в комиссии. <span class="aside">(Пекарь тоже уверен, что без хлеба жить нельзя. Хлеб при этом вкусный, но необязательный.)</span></p></div>
+
+<h2>Сколько стоит купить самому</h2>
+<p>Пример: квартира за USD 140 000 (<span id="ex-note">≈ 214 млн ARS, ниже лимита гербового сбора</span>). Расходы покупателя сверх цены:</p>
+
+<div class="chart" id="chart">
+  <div class="legend">
+    <span><span class="sw" style="background:var(--c1)"></span>Нотариус 2% + IVA</span>
+    <span><span class="sw" style="background:var(--c2)"></span>Гербовый сбор (ваша половина)</span>
+    <span><span class="sw" style="background:var(--c3)"></span>Реестр и прочие сборы ~1%</span>
+    <span><span class="sw" style="background:var(--c4)"></span>Риелтор 4% + IVA</span>
+  </div>
+  <div id="rows"></div>
+  <div class="axis" id="axis"></div>
+  <details><summary>Показать таблицей</summary><div class="tbl"><table id="ctable"></table></div><div class="tkey"><span class="g">Зелёный — обязательные расходы</span><span class="r">Бордовый — по выбору</span></div></details>
+</div>
+<p class="punch">Риелтор — самая большая строка в смете. И единственная необязательная.</p>
+
+<h3>Посчитайте свою квартиру</h3>
+<div class="calc">
+  <div class="fields">
+    <label class="f" for="price">Цена квартиры, USD<input id="price" type="number" inputmode="numeric" min="10000" step="1000" value="140000"></label>
+    <label class="f" for="rate">Курс BNA, ARS за 1 USD<input id="rate" type="number" inputmode="decimal" min="1" step="5" value="1530"></label>
+    <div class="f">Единственное жильё?
+      <div class="toggle" id="sole"><button type="button" data-v="1" aria-pressed="true">Да</button><button type="button" data-v="0" aria-pressed="false">Нет</button></div>
+    </div>
+  </div>
+  <p class="fine" id="rate-note">Курс Banco Nación. Поменяйте на курс дня сделки.</p>
+  <div class="out">
+    <div><small>Нотариус + сборы</small><b id="o-base">—</b></div>
+    <div><small>Гербовый сбор (ваша доля)</small><b id="o-sellos">—</b></div>
+    <div class="save"><small>Итого без риелтора</small><b id="o-direct">—</b></div>
+    <div class="waste"><small>+ комиссия риелтора</small><b id="o-agent">—</b></div>
+  </div>
+  <p class="fine">Расчёт ориентировочный. Гербовый сбор считают от большего из трёх: цены, фискальной оценки или VIR города. Лимит 226,1 млн ARS по этому курсу ≈ <b id="o-limit">USD 147 778</b>. Точную смету даёт нотариус до подписания boleto.</p>
+</div>
+
+<h2>Гербовый сбор: четыре случая</h2>
+<p>Ставки Ley Tarifaria 2026. Сбор делят пополам покупатель и продавец, ваша доля — половина цифры в клетке.</p>
+<div class="matrix">
+  <div class="h"></div><div class="h">До 226,1 млн ARS<br>≈ <span class="usd-limit">USD 148 000</span></div><div class="h">Дороже лимита</div>
+  <div class="h">Единственное жильё</div>
+  <div class="m0"><span class="v">0%</span>освобождение 100%</div>
+  <div class="m1"><span class="v">3,5%</span>только с суммы превышения</div>
+  <div class="h">Вторая квартира или инвестиция</div>
+  <div class="m1"><span class="v">2,7%</span>со всей цены</div>
+  <div class="m2"><span class="v">3,5%</span>со всей цены</div>
+</div>
+<div class="note"><span class="tag">Плюс</span><p>Ипотека на единственное жильё с 2026 года гербовым сбором не облагается (было 1%).</p></div>
+
+<h2>Пять шагов сделки</h2>
+<ol class="steps">
+  <li><h3>Нотариус — первым</h3><p>Выберите нотариуса, которому доверяете, ещё до любых денег. Он заменяет агентство в главном: проверяет объект и продавца.</p><div class="chips"><span class="chip">платит покупатель</span><span class="chip">2% + IVA</span></div></li>
+  <li><h3>Проверки</h3><p>Informe de dominio (кто собственник, ипотеки, аресты), Informe N° 2 (не лишён ли продавец права распоряжаться имуществом), estudio de títulos за 20 лет, долги по ABL, expensas, AySA, газу и свету.</p><div class="chips"><span class="chip a">обычно 4 рабочих дня</span><span class="chip a">срочно — 2</span></div></li>
+  <li><h3>Seña и boleto — по желанию</h3><p>Предварительный договор фиксирует цену, срок, нотариуса и штрафы. Задаток по умолчанию «подтверждающий»: передумать в одностороннем порядке нельзя (ст. 1059 CCyC). Можно идти сразу к escritura.</p><div class="chips"><span class="chip">впишите нотариуса в boleto</span></div></li>
+  <li><h3>Escritura</h3><p>Подписание у нотариуса: оплата остатка, ключи. Для налогов цену пересчитывают в песо по курсу продажи BNA за предыдущий рабочий день.</p><div class="chips"><span class="chip g">вы — владелец</span></div></li>
+  <li><h3>Регистрация</h3><p>Нотариус вносит акт в Реестр. До этого для третьих лиц собственником вы формально не считаетесь.</p><div class="chips"><span class="chip a">до 45 дней</span></div></li>
+</ol>
+<div class="note"><span class="tag">Ипотека</span><p>Нотариуса для ипотеки обычно назначает банк. Нотариуса для купли-продажи выбираете вы, и банк обязан этот выбор уважать, если нотариус указан в boleto (Ley 25.093, ст. 1).</p></div>
+
+<h2>Кто что платит</h2>
+<p>По обычаю CABA, если стороны не договорились иначе:</p>
+<div class="pays">
+  <div><h3>Покупатель</h3><ul>
+    <li>Гонорар нотариуса, 2% + IVA</li>
+    <li>Регистрация и сборы, ~1% (сбор Реестра снижен с 2‰ до 1‰)</li>
+    <li>Половина гербового сбора</li>
+  </ul></div>
+  <div><h3>Продавец</h3><ul>
+    <li>Справки и estudio de títulos, ~0,3–1%</li>
+    <li>Все долги квартиры — до escritura</li>
+    <li>Половина гербового сбора</li>
+    <li>Налог с продажи — с 2026 года 0 (ITI отменён Ley 27.743, Ganancias — Ley 27.802 и Decreto 406/2026 для продаж с 01.01.2026, если продавец не торгует недвижимостью как бизнесом)</li>
+  </ul></div>
+</div>
+<div class="note amber"><span class="tag">Зафиксируйте в boleto</span><p>Кто платит за estudio de títulos. По обычаю это продавец, но часть нотариусов включает его в свой гонорар.</p></div>
+
+<h2>До того, как отдать хоть доллар</h2>
+<p>Самая частая схема в Аргентине — человек выдаёт себя за собственника: поддельные escrituras и справки, объявление скопировано с чужого. Отметьте, что уже сделано:</p>
+<div class="check" id="check">
+  <label><input type="checkbox" id="c1"><span>Нотариус выбран и сопровождает сделку с начала</span></label>
+  <label><input type="checkbox" id="c2"><span>Informe de dominio получен: собственник, ипотеки, аресты</span></label>
+  <label><input type="checkbox" id="c3"><span>Informe N° 2: продавец не «inhibido»</span></label>
+  <label><input type="checkbox" id="c4"><span>Личность продавца сверена по нескольким документам с данными Реестра</span></label>
+  <label><input type="checkbox" id="c5"><span>Справки об отсутствии долгов: ABL, expensas, коммунальные</span></label>
+  <label><input type="checkbox" id="c6"><span>Если квартира по наследству — наследство оформлено до конца</span></label>
+  <label><input type="checkbox" id="c7"><span>Оплата только прослеживаемым способом, расписки сохранены</span></label>
+</div>
+<p class="prog" id="prog"></p>
+<div class="note red"><span class="tag">Риск</span><p>Boleto без escritura не делает вас собственником. Если продавец обанкротится или на квартиру наложат арест, есть риск. Защита: быстро переходить к escritura, а при оплате от 25% цены у покупателя есть приоритет (ст. 1170 CCyC).</p></div>
+
+<h2>Если вы иностранец</h2>
+<div class="laws">
+  <div class="law"><code>Право покупать</code><p>Конституция (ст. 20) уравнивает иностранцев с гражданами. Можно покупать с туристическим статусом. Ограничения Ley 26.737 касаются только сельских земель.</p></div>
+  <div class="law"><code>CDI</code><p>Налоговый номер для тех, у кого нет CUIT/CUIL. Бесплатно в ARCA по паспорту, можно через представителя по доверенности. Без него escritura не подписать.</p></div>
+  <div class="law"><code>Наличные и UIF</code><p>Если платите наличными больше 750 SMVM (≈ 293 млн ARS в октябре 2026, ≈ <span id="usd-uif">USD 192 000</span> по текущему курсу), нотариус сообщает в UIF. Порог растёт каждый месяц. Документы о происхождении денег готовьте заранее.</p></div>
+  <div class="law"><code>Bienes Personales</code><p>Собственник-нерезидент ежегодно платит налог на имущество, обычно через местного представителя с CUIT.</p></div>
+</div>
+<p>Рынок живёт в долларах: часто наличными («cara grande»), переводом или через MEP. Тип купюр и курс впишите в boleto. Налоги и сборы платятся в песо.</p>
+
+<h2>Пока ищете — поживите здесь</h2>
+<p>Хорошую квартиру без риелтора ищут не за неделю. Спешка — лучший друг мошенника. Пока идут проверки, жить где-то надо, и лучше в районе, где потом захочется купить.</p>
+<div class="rent">
+  <div class="flat">
+    <h3>Бельграно, Moldes 2546</h3>
+    <div class="price">USD 1 400 <span class="small">/ мес + expensas</span></div>
+    <ul>
+      <li>60 м², 3 ambientes: спальня + кабинет, 2 санузла</li>
+      <li>4 этаж, балкон, полностью с мебелью</li>
+      <li>Бассейн и терраса с паришей</li>
+      <li>Можно с питомцами, 600 м до метро D Juramento</li>
+      <li>Долгосрочно или от 3 месяцев</li>
+    </ul>
+    <a class="btn" href="https://hard-maxi.github.io/moldes-2546/" target="_blank" rel="noopener">Фото и детали</a>
+  </div>
+  <div class="flat">
+    <h3>Палермо / Вилья-Креспо, Córdoba 4340</h3>
+    <div class="price">USD 1 800 <span class="small">/ мес, всё включено</span></div>
+    <ul>
+      <li>Въезд с 20 октября 2026</li>
+      <li>Двушка, 2 санузла, тихая и тёплая</li>
+      <li>Электричество включено в цену, с лимитом</li>
+      <li>Посудомойка, стиралка, посуда, бельё, полотенца</li>
+      <li>Бассейн, спортзал, игровая, лаунж с паришей</li>
+      <li>Охрана 24/7, оптоволокно</li>
+      <li>Рестораны из гида Michelin в пешей доступности</li>
+      <li>Оплата криптой или наличными</li>
+    </ul>
+    <a class="btn" href="https://t.me/realestateBA/430" target="_blank" rel="noopener">Фото в канале</a>
+  </div>
+</div>
+
+<h2>Вместо вывода</h2>
+<p>Риелтор продаёт ощущение безопасности. Безопасность при этом продаёт нотариус, и стоит она вдвое дешевле.</p>
+<p class="punch">Двадцать минут показа за USD 6 776 — дорогая экскурсия.</p>
+<div class="vote">
+  <div>❤️ — покупаю сам, нотариус уже выбран</div>
+  <div>🤝 — позову риелтора, нервы дороже 4%</div>
+</div>
+<div class="contacts">
+  <div>Вопросы по сделке и аренде: <span>@Max_ReallyEstate</span><a href="https://t.me/Max_ReallyEstate" target="_blank" rel="noopener">написать</a></div>
+  <div>WhatsApp: <span id="wa">+54 9 11 2696 3676</span><button class="copy" type="button" data-copy="+5491126963676">Копировать</button></div>
+</div>
+
+<footer>
+<h3>Важно</h3>
+<ul class="small">
+  <li>Это обзор, а не юридическая консультация. Суммы и льготы подтверждайте у нотариуса перед сделкой: пороги индексируются.</li>
+  <li>Курс, SMVM и лимиты меняются. Здесь — значения на октябрь 2026.</li>
+  <li>Отмена COTI (RG ARCA 5697/2025, с 23.05.2025) не отменяет проверку происхождения денег.</li>
+</ul>
+<h3 style="margin-top:16px">Источники</h3>
+<ul class="small">
+  <li><a href="https://www.colegio-escribanos.org.ar/normas/CABA_LEY_2340.pdf" target="_blank" rel="noopener">Ley 2340 CABA</a></li>
+  <li><a href="https://imagenes.agip.gob.ar/novedades/nuevo-beneficio-en-el-impuesto-de-sellos-1" target="_blank" rel="noopener">AGIP: гербовый сбор 2026</a></li>
+  <li><a href="https://www.escribaniavildosola.com.ar/blog/cuanto-cuesta-escriturar-caba-2026/" target="_blank" rel="noopener">Escribanía Vildósola: расходы на escritura 2026</a></li>
+  <li><a href="https://www.colegio-escribanos.org.ar/noticias/2025_04_10_Folleto_Eleccion-del-escribano.pdf" target="_blank" rel="noopener">Ley 25.093: выбор нотариуса</a></li>
+  <li><a href="https://siap.blogdelcontador.com.ar/novedades/ganancias-reglamentan-la-exencion-para-alquileres-de-vivienda-y-venta-de-inmuebles-desde-2026/" target="_blank" rel="noopener">Decreto 406/2026</a></li>
+  <li><a href="https://www.colegio-escribanos.org.ar/2025/06/05/uif-resolucion-78-25/" target="_blank" rel="noopener">UIF 78/2025</a></li>
+  <li><a href="https://www.colegio-escribanos.org.ar/2025/05/26/arca-resolucion-general-5697-25/" target="_blank" rel="noopener">RG ARCA 5697/2025: отмена COTI</a></li>
+  <li><a href="https://www.derechoenzapatillas.com/2024/bajan-tasas-del-registro-de-la-propiedad-inmueble/" target="_blank" rel="noopener">Decreto 902/2024: сбор Реестра</a></li>
+</ul>
+</footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+/* Официальный курс: dolarapi.com (venta), запасной — RATE_INFO */
+let RATE_INFO={value:1530,date:"16.10.2026"};
+(async()=>{
+  try{
+    const ctl=new AbortController(); setTimeout(()=>ctl.abort(),4000);
+    const r=await fetch("https://dolarapi.com/v1/dolares/oficial",{signal:ctl.signal});
+    const j=await r.json();
+    if(j && +j.venta>100){
+      const d=j.fechaActualizacion?new Date(j.fechaActualizacion):new Date();
+      RATE_INFO={value:Math.round(+j.venta),date:d.toLocaleDateString("ru-RU",{timeZone:"America/Argentina/Buenos_Aires"})};
+    }
+  }catch(e){}
+  main();
+})();
+function main(){
+const RATE=RATE_INFO.value, LIMIT=226100000, NOT=0.0242, REG=0.01, AG=0.0484, MAX=14000;
+const fmt=n=>"USD "+Math.round(n).toLocaleString("ru-RU");
+function costs(price,sole,rate=RATE){
+  const ars=price*rate;
+  let s;
+  if(sole) s = ars<=LIMIT ? 0 : 0.035*(ars-LIMIT)/2/rate;
+  else s = ars<=LIMIT ? price*0.027/2 : price*0.035/2;
+  return {notary:price*NOT, sellos:s, reg:price*REG, agent:price*AG};
+}
+/* всё, что зависит от курса */
+const round1k=n=>"USD "+(Math.round(n/1000)*1000).toLocaleString("ru-RU");
+document.getElementById("meta-rate").textContent=RATE.toLocaleString("ru-RU")+" ("+RATE_INFO.date+")";
+document.querySelectorAll(".usd-limit").forEach(s=>s.textContent=round1k(LIMIT/RATE));
+document.getElementById("usd-uif").textContent=round1k(293400000/RATE);
+{const ars=140000*RATE;document.getElementById("ex-note").textContent="≈ "+Math.round(ars/1e6)+" млн ARS, "+(ars<=LIMIT?"ниже":"выше")+" лимита гербового сбора";}
+/* график */
+const SC=[["Сам, единственное жильё",1,0],["Сам, вторая квартира",0,0],["С риелтором, единственное",1,1],["С риелтором, вторая квартира",0,1]];
+const PARTS=[["notary","Нотариус","--c1"],["sellos","Гербовый сбор","--c2"],["reg","Реестр и сборы","--c3"],["agent","Риелтор","--c4"]];
+const rows=document.getElementById("rows"), tip=document.getElementById("tip");
+let thtml="<tr><th>Сценарий</th>"+PARTS.map(p=>"<th>"+p[1]+"</th>").join("")+"<th>Итого</th></tr>";
+SC.forEach(([name,sole,ag])=>{
+  const c=costs(140000,sole); if(!ag)c.agent=0;
+  const tot=c.notary+c.sellos+c.reg+c.agent;
+  const r=document.createElement("div");r.className="row";
+  r.innerHTML=`<div class="row-lbl"><span>${name}</span><b>${fmt(tot)}</b></div><div class="track"><div class="bar"></div></div>`;
+  const bar=r.querySelector(".bar");
+  PARTS.forEach(([k,lbl,col])=>{ if(c[k]<=0)return;
+    const b=document.createElement("button");b.type="button";b.className="seg";
+    b.style.width=(c[k]/MAX*100)+"%";b.style.background=`var(${col})`;
+    b.setAttribute("aria-label",`${lbl}: ${fmt(c[k])}`);b.dataset.t=`${lbl}: ${fmt(c[k])}`;
+    bar.appendChild(b);});
+  rows.appendChild(r);
+  thtml+="<tr><td>"+name+"</td>"+PARTS.map(p=>{const v=c[p[0]];const cl=v?(p[0]==="agent"?"opt":"must"):"zero";return "<td class=\""+cl+"\">"+(v?Math.round(v).toLocaleString("ru-RU"):"0")+"</td>";}).join("")+"<td class=\""+(ag?"opt":"must")+"\">"+Math.round(tot).toLocaleString("ru-RU")+"</td></tr>";
+});
+document.getElementById("ctable").innerHTML=thtml;
+document.getElementById("axis").innerHTML=[0,3500,7000,10500,14000].map(v=>`<span style="left:${v/MAX*100}%">${v?(v/1000).toLocaleString("ru-RU")+" тыс":"0"}</span>`).join("").replace(/(<span style="left:100%">)/,'<span style="left:auto;right:0;transform:none">');
+function showTip(e,el){tip.textContent=el.dataset.t;tip.hidden=false;const r=el.getBoundingClientRect();
+  const x=e&&e.clientX?e.clientX:r.left+r.width/2, y=e&&e.clientY?e.clientY:r.top;
+  tip.style.left=Math.min(x+10,innerWidth-250)+"px";tip.style.top=(y-40)+"px";}
+rows.addEventListener("mousemove",e=>{const s=e.target.closest(".seg");if(s)showTip(e,s);else tip.hidden=true;});
+rows.addEventListener("mouseleave",()=>tip.hidden=true);
+rows.addEventListener("focusin",e=>{const s=e.target.closest(".seg");if(s)showTip(null,s);});
+rows.addEventListener("focusout",()=>tip.hidden=true);
+rows.addEventListener("click",e=>{const s=e.target.closest(".seg");if(s)showTip(e,s);});
+/* калькулятор */
+const price=document.getElementById("price"), sole=document.getElementById("sole"), rateIn=document.getElementById("rate");
+let isSole=true;
+rateIn.value=RATE_INFO.value;
+document.getElementById("rate-note").textContent=`Курс Banco Nación на ${RATE_INFO.date}: ${RATE_INFO.value.toLocaleString("ru-RU")}. Обновляется автоматически, можно ввести свой.`;
+function calc(){const p=Math.max(0,+price.value||0), rt=(+rateIn.value>0?+rateIn.value:RATE), c=costs(p,isSole,rt);
+  document.getElementById("o-limit").textContent=fmt(LIMIT/rt);
+  document.getElementById("o-base").textContent=fmt(c.notary+c.reg);
+  document.getElementById("o-sellos").textContent=fmt(c.sellos);
+  document.getElementById("o-direct").textContent=fmt(c.notary+c.reg+c.sellos);
+  document.getElementById("o-agent").textContent=fmt(c.agent);}
+price.addEventListener("input",calc);
+rateIn.addEventListener("input",calc);
+sole.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;isSole=b.dataset.v==="1";
+  sole.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));calc();});
+calc();
+/* чек-лист */
+const KEY="caba-buy-check";let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const boxes=[...document.querySelectorAll("#check input")];
+function prog(){const n=boxes.filter(b=>b.checked).length;
+  document.getElementById("prog").textContent=n===boxes.length?"Все 7 пунктов. Можно говорить о деньгах.":`Сделано ${n} из ${boxes.length}. Деньги — после всех семи.`;}
+boxes.forEach(b=>{b.checked=!!st[b.id];b.parentElement.classList.toggle("on",b.checked);
+  b.addEventListener("change",()=>{st[b.id]=b.checked;b.parentElement.classList.toggle("on",b.checked);try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}prog();});});
+prog();
+/* копирование */
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",()=>{
+  const t=b.dataset.copy;
+  const ok=()=>{b.textContent="Скопировано";setTimeout(()=>b.textContent="Копировать",1600)};
+  const fallback=()=>{const s=document.getElementById("wa"),r=document.createRange();r.selectNodeContents(s);const sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent="Выделено";};
+  try{navigator.clipboard.writeText(t).then(ok,fallback)}catch(e){fallback()}
+}));
+}
+</script>
+
+</body>
+</html>
